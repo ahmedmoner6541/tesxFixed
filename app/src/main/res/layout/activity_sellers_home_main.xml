@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:id="@+id/activity_sellers_home_main"
+    tools:context=".Sellers.SellersHomeMainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp" />
+
+    <eu.long1.spacetablayout.SpaceTabLayout
+        android:id="@+id/spaceTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:number_of_tabs="four"
+
+        app:button_color="@color/white"
+
+        app:icon_one="@drawable/ic_search"
+        app:icon_two="@drawable/ic_home_black_24dp"
+        app:icon_three="@drawable/ic_add"
+        app:icon_four="@drawable/nav_cart"
+
+
+        app:starting_position="two"
+        />
+    <!--        app:icon_five="@drawable/ic_search"-->
+
+</com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>

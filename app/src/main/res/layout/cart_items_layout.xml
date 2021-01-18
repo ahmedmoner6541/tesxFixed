@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="15dp"
+ >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="#CDDC39">
+
+        <TextView
+            android:id="@+id/cart_product_quantity1"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="الكميه"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_marginRight="5dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/cart_product_name1"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="اسم المنتج"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:id="@+id/cart_product_price1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="السعر"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_below="@+id/cart_product_quantity1"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+
+
+        <TextView
+            android:id="@+id/cart_product_discound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="الخصم"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_below="@+id/cart_product_price1"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        cart_product_name1_salary
+        <TextView
+            android:id="@+id/cart_product_pid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="الوقت والتاريخ"
+            android:textSize="14dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_below="@+id/cart_product_discound"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

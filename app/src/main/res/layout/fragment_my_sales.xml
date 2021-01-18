@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sellers.SellersFragment.MySalesFragment">
+
+    <RelativeLayout
+        android:id="@+id/containerMySales"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/re22"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/exite"
+                android:layout_width="@dimen/_55sdp"
+                android:layout_height="match_parent"
+                android:text="خروج"
+                android:gravity="center"
+                android:textColor="@color/teal_200"
+                android:width="1dp"
+                />
+
+            <TextView
+
+                android:layout_width="@dimen/_250sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="مبيعاتي"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:width="1dp"
+                />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sellery_mySales_rv_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/nav_view_butttonnn"
+            android:layout_below="@+id/re22"
+            tools:listitem="@layout/orders_layout"
+            android:background="@color/colorAccent" />
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

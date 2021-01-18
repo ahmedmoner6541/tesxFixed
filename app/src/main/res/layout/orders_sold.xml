@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="50dp"
+    android:elevation="@dimen/_50sdp"
+    android:padding="@dimen/_20sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFC107"
+        android:padding="@dimen/_20sdp">
+
+        <TextView
+            android:id="@+id/num_order"
+            android:text="رقم الاوردر"
+
+            android:textSize="@dimen/_22sdp"
+             android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/amount_order"
+            android:text="كميه الاوردر"
+
+            android:textSize="@dimen/_22sdp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/num_order"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/show_products_order"
+            android:text="منتجات  الاوردر"
+            android:textSize="@dimen/_22sdp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/amount_order"
+
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/date_order"
+            android:text="تاريخ الاوردر"
+            android:textSize="@dimen/_22sdp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/show_products_order"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/slary_order"
+            android:text="سعرمنتجات الاوردر"
+            android:textSize="@dimen/_22sdp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/date_order"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
