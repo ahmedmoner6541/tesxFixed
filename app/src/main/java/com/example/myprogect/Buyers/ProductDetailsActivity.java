@@ -36,7 +36,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productprice, productDiscribtion, productNaem, productsalarynametv;
-    private String productId = "" , state = "Normal" ;
+    private String productId = "" , state = "Normal" , sid = "" ;
 
     public static String productsalarynametxt;
 
@@ -49,6 +49,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         productId = getIntent().getStringExtra("pid");
         productsalarynametxt = getIntent().getStringExtra("hhh");
+        sid = getIntent().getStringExtra("sellerId");
 
         Toast.makeText(this, "sale is" + productsalarynametxt, Toast.LENGTH_SHORT).show();
         numberButton = findViewById(R.id.number_btn);
@@ -103,6 +104,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         final HashMap<String, Object> cartMap = new HashMap<>();
 
         cartMap.put("pid", productId);
+        cartMap.put("sid", sid);
         cartMap.put("pname", productNaem.getText().toString());
         cartMap.put("price", productprice.getText().toString());
         cartMap.put("date", saveCurrentDate);

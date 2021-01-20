@@ -1,7 +1,7 @@
 package com.example.myprogect.model;
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time, productstate , sellerName;
+    private String pname, description, price, image, category, pid, date, time, productstate , sellerName, sid;
 
 
     public Products() {
@@ -18,6 +18,14 @@ public class Products {
         this.time = time;
         this.productstate = productstate;
         this.sellerName = sellerName;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public String getPname() {

@@ -213,6 +213,7 @@ public class HomeActivity extends AppCompatActivity
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     intent.putExtra("hhh", model.getSellerName());
+                                    intent.putExtra("sellerId", model.getSid());
 
                                     startActivity(intent);
                                 }

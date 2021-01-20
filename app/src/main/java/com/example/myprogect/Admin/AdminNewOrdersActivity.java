@@ -4,6 +4,7 @@ package com.example.myprogect.Admin;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +22,17 @@ import com.example.myprogect.Buyers.Prevalent;
 import com.example.myprogect.R;
 import com.example.myprogect.model.AdminOrsers;
 import com.example.myprogect.model.Cart;
+import com.example.myprogect.model.Products;
 import com.example.myprogect.prevalent.AdminOrdersViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,8 +40,9 @@ import java.util.HashMap;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
 
+    private static final String TAG = "zxcAdminNewOrdersActivity";
     RecyclerView orderlist;
-    DatabaseReference orderRef;
+    DatabaseReference orderRef, AdminViewRef, soldProductsRef;
 
     ConfirmFinalOrderActivity confirmFinalOrderActivity;
 
@@ -46,7 +52,8 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_new_orders);
 
         orderRef = FirebaseDatabase.getInstance().getReference().child("orders").child("ordersNotApproved");
-        //   soldRef = FirebaseDatabase.getInstance().getReference().child("orders").child("ordersApproved");
+        AdminViewRef = FirebaseDatabase.getInstance().getReference().child("cart list").child("Admin View");
+        soldProductsRef = FirebaseDatabase.getInstance().getReference().child("soldProducts");
 
         orderlist = findViewById(R.id.order_List);
         orderlist.setLayoutManager(new LinearLayoutManager(this));
@@ -174,17 +181,44 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplication(), "  تم اتمام طلبك النهائي بنحاج  hhhhhhhhhh", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
+                                      //  Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                      //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                     //   startActivity(intent);
+                                     //   finish();
+
+                                        addSoldProduct(uID);
                                     }
                                 }
                             });
+
+
+
+
                 }
             }
         });
 
+    }
+
+    private void addSoldProduct(String uID) {
+        AdminViewRef.child(uID).child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Log.d(TAG, "onDataChange: "+ dataSnapshot.getKey());
+                    // User model = dataSnapshot.getValue(User.class);
+                    Products products = dataSnapshot.getValue(Products.class);
+                    Log.d(TAG, "onDataChange: "+products.getSid());
+
+                    soldProductsRef.child(products.getSid()).child(products.getPid()).setValue(dataSnapshot.getValue());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
