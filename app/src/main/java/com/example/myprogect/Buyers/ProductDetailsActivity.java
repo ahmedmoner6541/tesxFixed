@@ -36,9 +36,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productprice, productDiscribtion, productNaem, productsalarynametv;
-    private String productId = "" , state = "Normal" , sid = "" ;
+    private String productId = "", state = "Normal", sid = "";
 
     public static String productsalarynametxt;
+    Products products;
 
     public static int NUM_CART;
 
@@ -105,13 +106,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         cartMap.put("pid", productId);
         cartMap.put("sid", sid);
-        cartMap.put("pname", productNaem.getText().toString());
-        cartMap.put("price", productprice.getText().toString());
+        cartMap.put("pname", products.getPname());
+        cartMap.put("price", products.getPrice());
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTiem);
         cartMap.put("quantity", numberButton.getNumber());
         cartMap.put("discount", "");
-        cartMap.put("salaryName", productsalarynametxt);
+        cartMap.put("image", products.getImage());
+        cartMap.put("description", products.getDescription());
+        cartMap.put("category", products.getCategory());
+        cartMap.put("productstate", products.getProductstate());
 
 
         cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
@@ -150,7 +154,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     //        ????????????????????????????????????
-                    Products products = snapshot.getValue(Products.class);
+                    products = snapshot.getValue(Products.class);
 
 
                     productsalarynametv.setText("اسم البائع : " + productsalarynametxt);
