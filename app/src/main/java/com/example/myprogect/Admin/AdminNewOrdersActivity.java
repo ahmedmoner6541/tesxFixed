@@ -40,7 +40,7 @@ import java.util.HashMap;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
 
-    private static final String TAG = "zxcAdminNewOrdersActivity";
+    private static final String TAG = "zxcAdminNewOrders";
     RecyclerView orderlist;
     DatabaseReference orderRef, AdminViewRef, soldProductsRef;
 
@@ -209,8 +209,10 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                     // User model = dataSnapshot.getValue(User.class);
                     Products products = dataSnapshot.getValue(Products.class);
                     Log.d(TAG, "onDataChange: "+products.getSid());
+                    String key = soldProductsRef.child(products.getSid()).push().getKey();
+                    soldProductsRef.child(products.getSid()).child(key).setValue(dataSnapshot.getValue());
 
-                    soldProductsRef.child(products.getSid()).child(products.getPid()).setValue(dataSnapshot.getValue());
+                    AdminViewRef.child(uID).child("Products").child(products.getPid()).removeValue();
                 }
             }
 
